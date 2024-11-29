@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_state_management/controller/counter_screen_controller.dart';
-import 'package:provider_state_management/view/counter_screen/second_screen/second_screen.dart';
+import 'package:provider_state_management/view/second_screen/second_screen.dart';
 
 class CounterScreen extends StatelessWidget {
   const CounterScreen({super.key});
@@ -20,7 +20,7 @@ class CounterScreen extends StatelessWidget {
           child: Consumer<CounterScreenController>(
         builder: (context, counterScreenState, child) => InkWell(
           onTap: () {
-            Navigator.push(
+            Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (context) => SecondScreen(),

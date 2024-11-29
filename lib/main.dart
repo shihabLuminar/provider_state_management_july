@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_state_management/controller/counter_screen_controller.dart';
+import 'package:provider_state_management/controller/second_screen_controller.dart';
 import 'package:provider_state_management/view/counter_screen/counter_screen.dart';
 
 void main() {
@@ -12,10 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => CounterScreenController(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => SecondScreenController()),
+      ],
       child: MaterialApp(
-        home: CounterScreen(),
+        home: ChangeNotifierProvider(
+            create: (context) => CounterScreenController(),
+            child: CounterScreen()),
       ),
     );
   }
